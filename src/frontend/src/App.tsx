@@ -48,8 +48,8 @@ function App() {
   return (
     <main>
       <div className="container mt-5">
-        <h1 className="mb-4">Generate Event</h1>
-
+        <h1 className="mb-4">Event Certificate Generator</h1>
+<p>This app have functionality to generate event certificate for attendee with only write the name with enter to separate.</p>
         <div className="mb-3">
           <label htmlFor="names" className="form-label">Names (separated by enter):</label>
           <textarea

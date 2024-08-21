@@ -40,28 +40,28 @@ export default Server(
             res.json({ greeting: `Hello, ${req.query.name}` });
         });
 
-        app.post('/price-oracle', async (req, res) => {
-            ic.setOutgoingHttpOptions({
-                maxResponseBytes: 20_000n,
-                cycles: 500_000_000_000n,
-                transformMethodName: 'transform'
-            });
+        // app.post('/price-oracle', async (req, res) => {
+        //     ic.setOutgoingHttpOptions({
+        //         maxResponseBytes: 20_000n,
+        //         cycles: 500_000_000_000n,
+        //         transformMethodName: 'transform'
+        //     });
 
-            const date = '2024-04-01';
-            const response = await (await fetch(`https://api.coinbase.com/v2/prices/${req.body.pair}/spot?date=${date}`)).json();
-            res.json(response);
-        });
+        //     const date = '2024-04-01';
+        //     const response = await (await fetch(`https://api.coinbase.com/v2/prices/${req.body.pair}/spot?date=${date}`)).json();
+        //     res.json(response);
+        // });
 
         app.use(express.static('/dist'));
         return app.listen();
     },
     // Candid section
     {
-        transform: query([HttpTransformArgs], HttpResponse, (args) => {
-            return {
-                ...args.response,
-                headers: []
-            };
-        })
+        // transform: query([HttpTransformArgs], HttpResponse, (args) => {
+        //     return {
+        //         ...args.response,
+        //         headers: []
+        //     };
+        // })
     }
 );
